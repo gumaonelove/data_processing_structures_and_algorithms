@@ -10,7 +10,6 @@
 void Stack::push(int x) {
     if (isFull()) {
         cout << "Stack заполнен, добавление элемента " << x << " не возможно" << endl;
-        exit(EXIT_FAILURE);
     } else {
         cout << "Добавление элемента " << x << " в Stack" << endl;
         arr[++top] = x;
@@ -20,7 +19,6 @@ void Stack::push(int x) {
 int Stack::pop() {
     if (isEmpty()){
         cout << "Stack пуст, удаление элемента не возможно" << endl;
-        exit(EXIT_FAILURE);
     } else {
         cout << "Удаление элемента " << peek() << " из Stack " << endl;
         return arr[top--];
@@ -32,7 +30,6 @@ int Stack::peek() {
     if (!isEmpty()){
         return arr[top];
     } else {
-        exit(EXIT_FAILURE);
     }
 }
 
