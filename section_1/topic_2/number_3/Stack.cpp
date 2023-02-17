@@ -15,7 +15,7 @@ int fail() {
     return a;
 }
 
-void menu(Stack stack)
+void menu()
 {
     int console_command_number, value;
     while (true)
@@ -23,8 +23,8 @@ void menu(Stack stack)
         cout << "\nВведите номер команды: " << endl;
         cout << "1. Вывести текущее состояние Stack в консоль" << endl;
         cout << "2. Добавить элемент в Stack" << endl;
-        cout << "3. Удалить элемент из Stack"  << endl;
-        cout << "4. Выполнить проверку заполненности Stack" << endl;
+        cout << "3. Добавить несколько элементов в Stack" << endl;
+        cout << "4. Удалить элемент из Stack"  << endl;
         cout << "5. Выполнить проверку пустоты Stack" << endl;
         cout << "6. Конец программы" << endl;
         cout << "Ваш выбор?" << endl;
@@ -32,24 +32,23 @@ void menu(Stack stack)
 
         if (console_command_number == 1) {
             cout << "Текущее состояние Stack" << endl;
-            stack.show();
+            show(sp);
         }
         else if (console_command_number == 2)
         {
             cout << "Добавить элемент в Stack" << endl;
             cout << "Введите элемент" << endl;
             value = fail();
-            stack.push(value);
+            sp = push(sp, value);
+        } else if (console_command_number == 3) {
+            pushRand();
         }
-        else if (console_command_number == 3)
+        else if (console_command_number == 4)
         {
-            stack.pop();
-        }
-        else if (console_command_number == 4) {
-            stack.isFull();
+            pop();
         }
         else if (console_command_number == 5) {
-            stack.isEmpty();
+            isEmpty();
         }
         else if (console_command_number == 6) {
             break;
@@ -63,7 +62,8 @@ void menu(Stack stack)
 
 int main()
 {
-    Stack stack(10);
-    menu(stack);
+    init();
+    srand(static_cast<unsigned int> (time(0)));
+    menu();
     return 0;
 }

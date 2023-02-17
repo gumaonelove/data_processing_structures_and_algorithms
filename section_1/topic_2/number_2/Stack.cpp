@@ -17,7 +17,7 @@ int fail() {
 
 void menu()
 {
-    int console_command_number, value, auxiliary_console_command_number;
+    int console_command_number, value;
     while (true)
     {
         cout << "\nВведите номер команды: " << endl;
