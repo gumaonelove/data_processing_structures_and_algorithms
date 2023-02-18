@@ -23,9 +23,9 @@ void MoveToSecondStack()
 
 void add_from_second()
 {
-    if (!isEmpty(sp_auxiliary))
-    {Stack* current = sp_auxiliary;
-        sp_auxiliary->next = sp_auxiliary;
+    if (!isEmpty(sp_auxiliary)){
+        Stack* current = sp_auxiliary;
+        sp_auxiliary = sp_auxiliary->next;
         current->next = sp;
         sp = current;
     } else {
