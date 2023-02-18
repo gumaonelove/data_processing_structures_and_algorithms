@@ -4,16 +4,27 @@
 
 #include "config.h"
 
+char fail() {
+    char a;
+    while (!(cin >> a) || (cin.peek() != '\n'))
+    {
+        cin.clear();
+        while (cin.get() != '\n');
+        cout << "Ошибка попробуйте снова" << endl;
+    }
+    return a;
+}
 
 int getRandom(int maxValue) {
     return(rand() % maxValue) + 1;
 }
 
 void RandomAction() {
+    cout << "RandomAction()" << endl;
     int randomAction = getRandom(100);
     int randomCount = getRandom(maxElementToAction);
     bool isPush = randomAction % 2 == 0;
-    cout << "Действие" << (isPush ? "Добавление" : "Удаление") << "\nНомер элемента: " << randomCount << endl;
+    cout << "Действие" << (isPush ? "Добавление " : " Удаление") << "\nНомер элемента: " << randomCount << endl;
     if (isPush) {
         for (int i = 0; i < randomCount; i++) {
             char symbol = symbols[getRandom(26)];
@@ -36,14 +47,12 @@ void RandomAction() {
 
 void timer() {
     srand(time(NULL));
+    char q;
     while (true) {
         this_thread::sleep_for(chrono::milliseconds(100));
-        seconds += 0.1;
-        if (seconds >= secondsTime) {
-            RandomAction();
-            seconds = 0;
-        }
-        if (GetAsyncKeyState('Q')  < 0) {
+        RandomAction();
+        q = fail();
+        if (q == 'q') {
             break;
         }
     }

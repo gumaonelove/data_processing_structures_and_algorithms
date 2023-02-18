@@ -6,7 +6,6 @@
 #define DATA_PROCESSING_STRUCTURES_AND_ALGORITHMS_CONFIG_H
 
 #include <iostream>
-#include <windows.h>
 #include <random>
 #include <thread>
 #include<chrono>
@@ -22,7 +21,7 @@ using namespace std;
 
 char symbols[] = "QWERTYUIOPASDFGHJKLZXCVBNM";
 int maxElementToAction = 3;
-int secondsTime = 5;
+int secondsTime = 1;
 int hours = 0, minutes = 0;
 double seconds = 0;
 
