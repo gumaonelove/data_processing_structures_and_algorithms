@@ -4,20 +4,6 @@
 
 #include "config.h"
 
-void timer() {
-    srand(time(NULL));
-    while (true) {
-        this_thread::sleep_for(chrono::milliseconds(100));
-        seconds += 0.1;
-        if (seconds >= secondsTime) {
-            RandomAction();
-            seconds = 0;
-        }
-        if (GetAsyncKeyState('Q')  < 0) {
-            break;
-        }
-    }
-}
 
 int getRandom(int maxValue) {
     return(rand() % maxValue) + 1;
@@ -46,6 +32,21 @@ void RandomAction() {
         }
     }
     ShowQueue();
+}
+
+void timer() {
+    srand(time(NULL));
+    while (true) {
+        this_thread::sleep_for(chrono::milliseconds(100));
+        seconds += 0.1;
+        if (seconds >= secondsTime) {
+            RandomAction();
+            seconds = 0;
+        }
+        if (GetAsyncKeyState('Q')  < 0) {
+            break;
+        }
+    }
 }
 
 int main() {
