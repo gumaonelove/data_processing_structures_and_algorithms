@@ -7,7 +7,6 @@
 
 
 #include <iostream>
-#include <Windows.h>
 
 struct Item
 {

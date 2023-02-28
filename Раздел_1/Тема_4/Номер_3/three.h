@@ -195,26 +195,23 @@ void pop(Main_List* list)
     int _value;
     cout<<"Enter element which you want to delete:\n";
     cin >> _value;
-    Main_List* temp = list;
-    Main_List* pred = NULL;
+    Main_List* temp = list->NextM;
+    Main_List* pred = list;
     Sub_List* sub_temp;
-    while (temp !=NULL)
-    {
-        if (temp->value == _value)
-        {
+    while (temp !=NULL) {
+        if (temp->value == _value) {
+            while (temp->sub != NULL) {
+                sub_temp = temp->sub;
+                temp->sub = temp->sub->NextS;
+                delete sub_temp;
+            }
+            pred->NextM = temp->NextM;
+            delete temp;
             break;
         }
         pred = temp;
         temp = temp->NextM;
     }
-    while (temp->sub->NextS !=NULL)
-    {
-        sub_temp = temp->sub;
-        temp->sub = temp->sub ->NextS;
-        delete sub_temp;
-    }
-    pred->NextM = temp->NextM;
-    delete temp;
 }
 
 void popS(Main_List* list)
